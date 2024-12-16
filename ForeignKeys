@@ -1,0 +1,75 @@
+Alter Table WeatherDetails
+Add Constraint FK_WeatherDetails_OrderID
+FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
+
+Alter Table Payments
+Add Constraint FK_Payments_OrderID
+FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
+
+Alter Table Ingredients
+Add Constraint FK_Ingredients_EmployeeID
+FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+
+Alter table TodaysPrep
+Add Constraint FK_TodaysPrep_RecipeID
+FOREIGN KEY (RecipeID) REFERENCES Recipes(RecipeID)
+
+Alter table TomorrowsPrep
+Add Constraint FK_TomorrowsPrep_RecipeID
+FOREIGN KEY (RecipeID) REFERENCES Recipes(RecipeID)
+
+Alter Table Stores
+Add Constraint FK_Stores_Manager
+FOREIGN KEY (ManagerID) REFERENCES Employees(EmployeeID)
+
+Alter Table Inventory
+Add constraint FK_Inventory_StoreID
+FOREIGN KEY (StoreID) REFERENCES Stores(StoreID)
+
+Alter Table Employees
+Add Constraint FK_Employees_EmployeeID
+FOREIGN KEY (ReportingManagerID) REFERENCES Employees(EmployeeID)
+
+
+Alter Table Employees
+Add Constraint FK_Employees_EmployeeID
+FOREIGN KEY (ReportingManagerID) REFERENCES Employees(EmployeeID)
+
+Alter Table Membership
+Add Constraint FK_Membership_CustomerID
+FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+
+Alter Table Feedback
+Add constraint FK_Feedback_CustomerID
+FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+
+Alter Table Feedback
+Add Constraint FK_Feedback_OrderID
+FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
+
+
+Alter Table Membership
+Add Constraint FK_Membership_PaymentID
+FOREIGN KEY (PaymentID) REFERENCES Payments(PaymentID)
+
+Alter TABLE Membership
+Add Constraint FK_Membership_PlanID
+FOREIGN KEY (PlanID) REFERENCES SubscriptionPlans(PlanID)
+
+
+Alter table Orders
+Add Constraint FK_Orders_CustomerID
+FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+
+Alter table Orders
+Add Constraint FK_Orders_StoreID
+FOREIGN KEY (StoreID) REFERENCES Stores(StoreID)
+
+
+Alter table Orders
+Add Constraint FK_Orders_EmployeeID
+FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+
+Alter table Orders
+Add Constraint FK_Orders_FeedbackID
+FOREIGN KEY (FeedbackID) REFERENCES Feedback(FeedbackID)
