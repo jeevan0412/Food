@@ -1,0 +1,170 @@
+
+Select * from subscriptionplans
+
+-- Customers Table Updated
+CREATE TABLE Customers (
+    CustomerID INT IDENTITY(11100000,1) PRIMARY KEY,
+    MemberID INT null,
+    FirstName VARCHAR(100) NOT NULL,
+    LastName VARCHAR(100) NOT NULL,
+    PhoneNumber VARCHAR(15),
+    Email VARCHAR(100),
+    Zipcode VARCHAR(10),
+    PointsEarned INT null
+);
+
+-- WeatherDetails Table Updated
+CREATE TABLE WeatherDetails (
+    WeatherID INT PRIMARY KEY,
+    WeatherCondition VARCHAR(100),
+    Temperature DECIMAL(5, 2),
+    OrderID int,
+    WeatherDate DATE,
+    WeatherTime TIME
+
+);
+
+-- Payments Table Added
+CREATE TABLE Payments (
+    PaymentID INT PRIMARY KEY,
+    OrderID INT,
+    PaymentDate DATE,
+    PaymentAmount DECIMAL(10, 2),
+    PaymentMethod VARCHAR(50)
+);
+
+-- Ingredients Table Updated
+CREATE TABLE Ingredients (
+    IngredientID VARCHAR PRIMARY KEY,
+    IngredientName VARCHAR(100) NOT NULL,
+    ExpiryDate DATE,
+    PurchaseDate DATE,
+    TransactionValue DECIMAL,
+    EmployeeID INT
+
+);
+
+-- Suppliers Table Updated
+CREATE TABLE Suppliers (
+    SupplierID VARCHAR PRIMARY KEY,
+    SupplierName VARCHAR(100),
+    Country VARCHAR(20),
+    ContactInfo VARCHAR(100),
+    IngredientID INT null
+
+);
+
+-- TrashedItems Table Added
+CREATE TABLE TrashedItems (
+    TrashID INT PRIMARY KEY,
+    IngredientID INT null,
+    RecipeID int null,
+    MenuItemID int null,
+    Quantity DECIMAL(10, 2),
+    Reason VARCHAR(200) not null,
+    TrashTime Date,
+    TrashDate DATE
+
+);
+
+-- Orders Table Updated
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    CustomerID INT,
+    StoreID INT,
+    EmployeeID INT,
+    DeliveryType VARCHAR(20),
+    DeliveryCharges DECIMAL(10, 2),
+    TransactionTime TIME,
+    FeedbackID INT
+ 
+);
+
+-- Today's Prep Table Updated
+CREATE TABLE TodaysPrep (
+    PrepID INT PRIMARY KEY,
+    RecipeID INT,
+    QuantityPrepared DECIMAL(10, 2),
+    BestBeforeDays INT,
+    TaskType VARCHAR(50),
+    TimeTaken DECIMAL(5, 2)
+);
+
+-- TomorrowsPrep Table Updated
+CREATE TABLE TomorrowsPrep (
+    PrepID INT PRIMARY KEY,
+    RecipeID INT,
+    QuantityPlanned DECIMAL(10, 2),
+    BestBeforeDays int,
+    TaskType VARCHAR(50),
+    TimeTaken DECIMAL(5, 2)
+);
+
+-- MenuItems Table
+CREATE TABLE MenuItems (
+    MenuItemID INT PRIMARY KEY,
+    ItemName VARCHAR(100),
+    ItemDescription TEXT,
+    CuisineType VARCHAR,
+    Price DECIMAL(10, 2),
+    Category VARCHAR(100),
+    QuantityAvailable INT
+);
+
+-- Recipes Table Updated
+CREATE TABLE Recipes (
+    RecipeID INT PRIMARY KEY,
+    RecipeName VARCHAR(100),
+    Instructions TEXT,
+    IngredientID INT,
+    QuantityUsed DECIMAL(10, 2),
+    Serves INT
+);
+
+-- Employees Table Updated
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    FirstName VARCHAR(100),
+    LastName VARCHAR(100),
+    Position VARCHAR(100),
+    StoreID INT,
+    Section VARCHAR(100),
+    ReportingManagerID INT
+);
+
+-- Stores Table Updated
+CREATE TABLE Stores (
+    StoreID INT PRIMARY KEY,
+    StoreName VARCHAR(100),
+    StoreLocation VARCHAR(100),
+    ZipCode int,
+    ManagerID INT
+);
+
+-- Feedback Table
+CREATE TABLE Feedback (
+    FeedbackID INT PRIMARY KEY,
+    CustomerID INT,
+    OrderID INT,
+    Rating INT,
+    Comments TEXT
+);
+
+-- Inventory Table
+CREATE TABLE Inventory (
+    InventoryID INT PRIMARY KEY,
+    StoreID INT,
+    IngredientID INT,
+    QuantityAvailable DECIMAL(10, 2)
+);
+
+-- Membership Table Added
+CREATE TABLE Membership (
+    MemberID INT IDENTITY(1110000,1) PRIMARY KEY,
+    CustomerID INT,
+    PlanID VARCHAR(),
+    AccountBalance DECIMAL,
+    PaymentID Int,
+    StartDate DATE,
+    EndDate DATE
+);
